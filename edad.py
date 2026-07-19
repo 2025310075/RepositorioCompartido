@@ -7,4 +7,8 @@ while True:
     except ValueError:
         print("Ingrese un número válido")
         
-print(f"Hola {nombre} tienes {edad} años")
+print("-------------------")
+print("-DATOS DEL USUARIO-")
+print("-------------------")
+print("Nombre:", nombre)
+print("Edad:", edad)

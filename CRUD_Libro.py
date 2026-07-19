@@ -96,6 +96,17 @@ class CRUD_Libro:
         messagebox.showinfo("Éxito", "Se eliminó correctamente")
     except NameError:
         messagebox.showwarning("Atención", "Por favor selecciona un libro primero.")
+        
+ def actualizar_tabla(self,tabla):
+    # Limpiar tabla visual
+    for item in tabla.get_children():
+        tabla.delete(item)
+
+
+    # llenar tabla con pacientes
+    for b in self.libros:
+        tabla.insert("", tk.END, values=(b["id"], b["nombre"], b["autor"], b["año"]))
+
 
 
 

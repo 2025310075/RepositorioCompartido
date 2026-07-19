@@ -41,7 +41,7 @@ class CRUD_Libro:
     messagebox.showinfo("Correcto", "El libro se registrócorrectamente.")
 
 
-def seleccionar_Libro(self,event,tabla,LiNombre,LiAutor,LiAño):
+ def seleccionar_Libro(self,event,tabla,LiNombre,LiAutor,LiAño):
     # READ
     try:
         seleccion = tabla.selection()[0]
@@ -60,6 +60,45 @@ def seleccionar_Libro(self,event,tabla,LiNombre,LiAutor,LiAño):
         LiAño.insert(0, valores[3])
     except IndexError:
         pass
+    
+ def actualizar_Libro(self,LiNombre, LiAutor,LiAño,tabla):
+    try:
+        nombre = LiNombre.get()
+        autor = LiAutor.get()
+        año = LiAño.get()
+
+
+        # UPDATE
+        for b in self.libros:
+            if b["id"] == self.ID_sele:
+                b["nombre"] = nombre
+                b["autor"] = autor
+                b["año"] = año
+                break
+               
+        self.actualizar_tabla(tabla)
+        self.limpiar(LiNombre,LiAutor,LiAño)
+        messagebox.showinfo("Éxito", "Los datos del libro se actualizaron correctamente.")
+    except NameError:
+        messagebox.showwarning("Atención", "Se tiene que seleccionar un libro primero")
+
+
+ def eliminar_Libro(self,LiNombre, LiAutor,LiAño,tabla):
+    try:
+        # DELETE
+        for i, p in enumerate(self.libros):
+            if p["id"] == self.ID_sele:
+                del self.libros[i]
+                break
+               
+        self.actualizar_tabla(tabla)
+        self.limpiar(LiNombre,LiAutor,LiAño)
+        messagebox.showinfo("Éxito", "Se eliminó correctamente")
+    except NameError:
+        messagebox.showwarning("Atención", "Por favor selecciona un libro primero.")
+
+
+
 
 
 

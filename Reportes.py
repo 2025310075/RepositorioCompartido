@@ -18,3 +18,6 @@ class Reportes:
         self.llenar_tabla(tabla,encontrados)
         if len(encontrados)==0:
             messagebox.showinfo("Búsqueda","No se encontraron libros")
+    def mostrar_todos(self,libros,entrada,tabla):
+        entrada.delete(0,tk.END)
+        self.llenar_tabla(tabla,libros)

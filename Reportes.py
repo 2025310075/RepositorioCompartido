@@ -21,3 +21,9 @@ class Reportes:
     def mostrar_todos(self,libros,entrada,tabla):
         entrada.delete(0,tk.END)
         self.llenar_tabla(tabla,libros)
+
+    def reporte(self,libros):
+        if len(libros)==0:
+            messagebox.showinfo("Reporte","No hay libros registrados")
+        else:
+            messagebox.showinfo("Reporte","Total de libros: "+str(len(libros)))

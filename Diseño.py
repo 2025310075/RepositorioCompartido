@@ -2,11 +2,13 @@
 import tkinter as tk
 from tkinter import ttk
 import CRUD_Libro
+import Reportes
 
 class Biblioteca: 
     
  def __init__ (self):
   self.crud = CRUD_Libro.CRUD_Libro()
+  self.reportes=Reportes.Reportes()
   self.ventana = tk.Tk()
   self.ventana.title("Biblioteca Registro de Libros")
   self.ventana.geometry("500x600")
@@ -41,6 +43,22 @@ class Biblioteca:
   self.Limpiar.pack(pady=5)
   self.Salir = tk.Button(self.ventana, text="Salir", command=lambda: self.ventana.destroy())
   self.Salir.pack(pady=5)
+
+# Búsqueda y reporte
+  self.frame_buscar=tk.Frame(self.ventana)
+  self.frame_buscar.pack(pady=10)
+
+  self.EnBuscar=tk.Entry(self.frame_buscar,width=20)
+  self.EnBuscar.pack(side="left",padx=5)
+
+  self.Buscar=tk.Button(self.frame_buscar,text="Buscar",command=lambda:self.reportes.buscar(self.crud.libros,self.EnBuscar,self.tabla))
+  self.Buscar.pack(side="left",padx=5)
+
+  self.Mostrar=tk.Button(self.frame_buscar,text="Mostrar todos",command=lambda:self.reportes.mostrar_todos(self.crud.libros,self.EnBuscar,self.tabla))
+  self.Mostrar.pack(side="left",padx=5)
+
+  self.Reporte=tk.Button(self.frame_buscar,text="Reporte",command=lambda:self.reportes.reporte(self.crud.libros))
+  self.Reporte.pack(side="left",padx=5)
 
 # Treeview
   columnas = ("id", "nombre", "autor", "año")

@@ -19,4 +19,11 @@ class Autor:
      self.nacionalidad = ""
      self.edad = 0
      return "Autor eliminado"
-        
+ 
+ 
+    def validar_datos(self):
+       if self.nombre == "":
+          return False
+       if self.edad <= 0:
+         return False
+       return True    

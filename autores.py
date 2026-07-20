@@ -5,3 +5,6 @@ class Autor:
         self.nacionalidad = nacionalidad
         self.edad = edad
         
+    def mostrar_autor(self):
+     return f"Nombre: {self.nombre}, Nacionalidad: {self.nacionalidad}, Edad: {self.edad}"
+        
